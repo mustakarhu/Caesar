@@ -23,20 +23,11 @@ $python main.py -d -i encoded.txt -k 12 -o decoded.txt
 Since the Caesar cypher rotates over up to 26 different characters, the key is calculated using the modulo of the input key, therefore `1000 mod(26) = 12 mod(26)` the encoded text will be decoded using a different key.
 
 
-Original message. 
-'''
-Mustakarhu says hi there. This is a test file to see if everything is in place.
-'''
+Original message: `Mustakarhu says hi there. This is a test file to see if everything is in place.`
 
-Encoded message.
-'''
-Ygefmwmdtg emke tu ftqdq. Ftue ue m fqef ruxq fa eqq ur qhqdkftuzs ue uz bxmoq.
-'''
+Encoded message: `Ygefmwmdtg emke tu ftqdq. Ftue ue m fqef ruxq fa eqq ur qhqdkftuzs ue uz bxmoq.`
 
-Decoded message.
-'''
-Mustakarhu says hi there. This is a test file to see if everything is in place.
-'''
+Decoded message: `Mustakarhu says hi there. This is a test file to see if everything is in place.`
 
 ## Future work
 
