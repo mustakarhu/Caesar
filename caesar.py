@@ -6,10 +6,9 @@ class Caesar:
 	listupper = list(string.ascii_uppercase)
 
 	def __init__(self, init_key:int, init_readfile:str, init_writefile:str):
-		self.key = init_key
+		self.key = (init_key%26)
 		self.input_file= init_readfile
 		self.output_file = init_writefile
-		
 
 	def encode(self):
 		
