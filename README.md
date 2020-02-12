@@ -3,7 +3,7 @@
 ## About
 This example is a simple implementation of the Caesar's cipher also known as substitution cipher which is one of the simplest and earliest implementations of cryptography. 
 
-## Usage
+## Usage and Example
 
 The function has two main functions: Encrypt and Decrypt. 
 The user specifies the key and the input file and the output if not specified is saved to a default file ("output.txt").
@@ -21,6 +21,22 @@ $python main.py -d -i encoded.txt -k 12 -o decoded.txt
 '''
 
 Since the Caesar cypher rotates over up to 26 different characters, the key is calculated using the modulo of the input key, therefore `1000 mod(26) = 12 mod(26)` the encoded text will be decoded using a different key.
+
+
+Original message. 
+'''
+Mustakarhu says hi there. This is a test file to see if everything is in place.
+'''
+
+Encoded message.
+'''
+Ygefmwmdtg emke tu ftqdq. Ftue ue m fqef ruxq fa eqq ur qhqdkftuzs ue uz bxmoq.
+'''
+
+Decoded message.
+'''
+Mustakarhu says hi there. This is a test file to see if everything is in place.
+'''
 
 ## Future work
 
