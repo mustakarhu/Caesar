@@ -5,67 +5,52 @@ class Caesar:
 	listlower = list(string.ascii_lowercase)
 	listupper = list(string.ascii_uppercase)
 
-	def __init__(self,message:str,key:int=0):
-		self.key = key
-		self.message = message
+	def __init__(self, init_key:int, init_readfile:str, init_writefile:str):
+		self.key = init_key
+		self.input_file= init_readfile
+		self.output_file = init_writefile
+		
 
-	def changemessage(self):
-		message = input('message input (press enter): ')
-		self.message = message
-	def changekey(self):
-		while True:
+	def encode(self):
+		
+		try:
+			in_file = open(self.input_file,"r")
+			out_file = open(self.output_file,"w")
+			for line in in_file:
+				encoded_line = ""
+				for letter in line:
+					if letter.lower() in self.listlower:
+						idx = (self.listlower.index(letter.lower())+self.key)%26
+						if letter.isupper():
+							encoded_line +=self.listlower[idx].upper()
+						else:
+							encoded_line +=self.listlower[idx]
+					else:
+						encoded_line+=letter
 
-			try:
-				k = int(input('enter new key (1-25): '))
-			
-			except TypeError:
-				print('please input a number')
-				continue
+				out_file.write(encoded_line)
 
-			else:
-				if k<0 or k>25:
-					print('key value is not valid. Please input a number between 1 and 25')
-				else:
-					self.key = k
-					print('new key is: ', self.key)
-					break
-
-
-	def encodemessage(self):
-		output =''
-		print('encoding message: '+self.message)
-		for letter in self.message:
-			
-			if letter.lower() in self.listlower:
-				idx = (self.listlower.index(letter.lower())+self.key)%26
-				if letter.isupper():
-					output +=self.listlower[idx].upper()
-				else:
-					output +=self.listlower[idx]
-
-			else:
-				output+=letter
-
-		self.message = output
-		print('encoded message: '+self.message)
+		except OSError:
+			print(f"file {self.input_file} could not be opened")
 
 
-	def decodemessage(self):
-		output=''
-		print('encoded message: '+self.message)
-		for letter in self.message:		
-			if letter.lower() in self.listlower:
-				idx = (self.listlower.index(letter.lower())+(26-self.key))%26
-				if letter.isupper():
-					output +=self.listlower[idx].upper()
-				else:
-					output +=self.listlower[idx]
+	def decode(self):
+		try:
+			in_file = open(self.input_file,"r")
+			out_file = open(self.output_file,"w")
+			for line in in_file:
+				decoded_line=""
+				for letter in line:		
+					if letter.lower() in self.listlower:
+						idx = (self.listlower.index(letter.lower())+(26-self.key))%26
+						if letter.isupper():
+							decoded_line +=self.listlower[idx].upper()
+						else:
+							decoded_line +=self.listlower[idx]
+					else:
+						decoded_line+=letter
+				out_file.write(decoded_line)
 
-			else:
-				output+=letter
-		self.message = output
-		print("decoded message: "+self.message)
-
-
-	def savemessage(self):
-		pass
+		except OSError:
+			print(f"file {self.input_file} could not be opened")
+		
